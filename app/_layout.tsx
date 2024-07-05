@@ -1,5 +1,6 @@
 import { useFonts } from "expo-font"
 import { SplashScreen, Stack } from "expo-router"
+import { NativeBaseProvider, extendTheme } from "native-base"
 import React, { useEffect } from "react"
 
 SplashScreen.preventAutoHideAsync()
@@ -39,14 +40,54 @@ const RootLayout = () => {
     return null
   }
 
+  const theme = extendTheme({
+    colors: {
+      // Add new color
+      primary: {
+        50: "#eff6ff",
+        100: "#dbeafe",
+        200: "#bfdbfe",
+        300: "#93c5fd",
+        400: "#60a5fa",
+        500: "#3b82f6",
+        600: "#2563eb",
+        700: "#1d4ed8",
+        800: "#1e40af",
+        900: "#1e3a8a",
+      },
+      text: {
+        bodyText: "#262626",
+        secondary: "rgba(0, 0, 0, 0.4)",
+      },
+      // Redefining only one shade, rest of the color will remain same.
+      amber: {
+        400: "#d97706",
+      },
+      input: {
+        border: "rgba(0, 0, 0, 0.1)",
+        placeHolder: "rgba(0, 0, 0, 0.2)",
+        fill: "#FAFAFA",
+      },
+      divider: {
+        color: "rgba(0, 0, 0, 0.2)",
+      },
+    },
+    config: {
+      // Changing initialColorMode to 'dark'
+      initialColorMode: "dark",
+    },
+  })
+
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="index" />
-    </Stack>
+    <NativeBaseProvider theme={theme}>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="index" />
+      </Stack>
+    </NativeBaseProvider>
   )
 }
 
