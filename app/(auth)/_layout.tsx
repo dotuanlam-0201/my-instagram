@@ -1,4 +1,5 @@
 import { Stack } from "expo-router"
+import { StatusBar } from "native-base"
 import React from "react"
 import { StyleSheet } from "react-native"
 
@@ -13,6 +14,7 @@ const AuthLayout = () => {
         <Stack.Screen name="login" />
         <Stack.Screen name="sign-up" />
       </Stack>
+      <StatusBar backgroundColor="#3700B3" barStyle="light-content" />
     </React.Fragment>
   )
 }

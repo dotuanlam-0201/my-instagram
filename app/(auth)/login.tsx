@@ -1,3 +1,4 @@
+import { router } from "expo-router"
 import { Formik } from "formik"
 import {
   Button,
@@ -30,7 +31,7 @@ const LoginScreen = () => {
       setTimeout(() => {
         resolve()
         setIsLoading(false)
-        // router.replace("/sign-up")
+        router.replace("/home")
       }, 1000)
     })
   }
